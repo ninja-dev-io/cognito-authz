@@ -1,0 +1,23 @@
+version: 2.1
+
+orbs:
+  be-orb: ninja-dev-io/be-orb@1.0.12
+
+workflows:
+  build-and-deploy:
+    jobs:
+      - be-orb/test:
+          skip-tests: true
+      - be-orb/build:
+          requires:
+            - be-orb/test
+          context: aws  
+          repo: "${AWS_RESOURCE_NAME_PREFIX}-dev"
+      - be-orb/deploy:
+          requires:
+            - be-orb/build
+          context: aws  
+          aws-region: AWS_REGION
+          family: "${AWS_RESOURCE_NAME_PREFIX}-service-dev"
+          cluster-name: "${AWS_RESOURCE_NAME_PREFIX}-cluster-dev"
+          container-image-name-updates: "container=${AWS_RESOURCE_NAME_PREFIX}-service-dev,tag=latest"
