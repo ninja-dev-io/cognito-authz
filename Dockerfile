@@ -3,6 +3,8 @@ FROM python:3
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
+WORKDIR /code
+
 EXPOSE 5000
 
 RUN apt-get update && apt-get -y dist-upgrade
