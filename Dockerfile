@@ -24,7 +24,7 @@ RUN chmod +x entrypoint.sh
 
 COPY authz .
 
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["/code/entrypoint.sh"]
 
 CMD ["uwsgi", "uwsgi.ini"]
 
