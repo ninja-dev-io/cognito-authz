@@ -5,8 +5,6 @@ ENV PYTHONUNBUFFERED=1
 
 EXPOSE 5000
 
-RUN mkdir /code
-
 WORKDIR /code
 
 RUN apt-get update && apt-get -y dist-upgrade
