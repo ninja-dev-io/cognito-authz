@@ -11,11 +11,13 @@ RUN apt-get -y install python3-numpy python3-scipy
 RUN apt install -y netcat
 
 RUN pip install --upgrade pip
+
 COPY requirements.txt .
+
 RUN pip install -r requirements.txt
 
+COPY manage.py .
 COPY uwsgi.ini .
-
 COPY entrypoint.sh .
 
 RUN chmod +x entrypoint.sh
