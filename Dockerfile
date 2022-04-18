@@ -21,6 +21,7 @@ RUN pip install -r requirements.txt
 COPY . .
 
 RUN chmod +x entrypoint.sh
+RUN chmod -R 666 /code/authz/static
 
 ENTRYPOINT ["/code/entrypoint.sh"]
 
