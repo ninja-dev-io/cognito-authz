@@ -24,5 +24,5 @@ RUN chmod +x entrypoint.sh
 
 ENTRYPOINT ["/code/entrypoint.sh"]
 
-CMD ["uwsgi", "uwsgi.ini"]
+CMD ["uwsgi", "uwsgi.ini", "--show-config"]
 
