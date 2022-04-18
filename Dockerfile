@@ -3,6 +3,8 @@ FROM python:3
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
+EXPOSE 5000
+
 WORKDIR /code
 
 RUN apt-get update && apt-get -y dist-upgrade
@@ -14,6 +16,8 @@ RUN pip install --upgrade pip
 COPY requirements.txt .
 RUN pip install -r requirements.txt
 
+COPY uwsgi.ini .
+
 COPY entrypoint.sh .
 
 RUN chmod +x entrypoint.sh
@@ -21,4 +25,6 @@ RUN chmod +x entrypoint.sh
 COPY authz .
 
 ENTRYPOINT ["/code/entrypoint.sh"]
+
+CMD ["uwsgi", "uwsgi.ini"]
 

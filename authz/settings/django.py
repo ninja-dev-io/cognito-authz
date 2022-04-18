@@ -1,4 +1,5 @@
 from .base import *       
+import boto3
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = env('SECRET_KEY')
@@ -61,7 +62,7 @@ DATABASES = {
         'ENGINE': env('DB_ENGINE'),
         'NAME': env('DB_NAME'), 
         'USER': env('DB_USER'), 
-        'PASSWORD': env('DB_PASS'),
+        'PASSWORD': boto3.client('ssm').get_parameter(Name=env('DB_PASS'), WithDecryption=True)['Parameter']['Value'],
         'HOST': env('DB_HOST'), 
         'PORT': env('DB_PORT'),
     }
@@ -110,6 +111,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
+
+STATIC_ROOT = os.path.join(BASE_DIR, "static/")
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field

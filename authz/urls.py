@@ -15,6 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf import settings
+from django.conf.urls.static import static
+from django.http.response import HttpResponse
 from .views import *
 
 admin.autodiscover()
@@ -24,4 +27,5 @@ urlpatterns = [
     path('oauth2/token/', TokenView.as_view()),
     path('oauth2/introspect/', IntrospectView.as_view()),
     path('oauth2/refresh/', RefreshView.as_view()),
-]
+    path('status/', lambda r: HttpResponse())
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

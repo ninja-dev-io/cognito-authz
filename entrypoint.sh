@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if [ "$DB_NAME" = "postgres" ]
+if [ "$DB_NAME" = "authz" ]
 then
     echo "Waiting for postgres..."
 
@@ -14,6 +14,6 @@ fi
 python manage.py flush --no-input
 python manage.py makemigrations
 python manage.py migrate
-echo "from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.create_superuser('admin', 'admin@myproject.com', 'password')" | python manage.py shell
+python manage.py collectstatic --noinput
 
 exec "$@"

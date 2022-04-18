@@ -1,0 +1,5 @@
+from .base import *
+
+ADMIN_USERNAME = env('ADMIN_USERNAME')
+ADMIN_PASSWORD = env('ADMIN_PASSWORD')
+ADMIN_EMAIL = env('ADMIN_EMAIL')
