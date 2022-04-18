@@ -18,13 +18,12 @@ COPY requirements.txt .
 
 RUN pip install -r requirements.txt
 
+COPY authz .
 COPY manage.py .
 COPY uwsgi.ini .
 COPY entrypoint.sh .
 
 RUN chmod +x entrypoint.sh
-
-COPY authz .
 
 ENTRYPOINT ["/code/entrypoint.sh"]
 
