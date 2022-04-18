@@ -16,9 +16,7 @@ COPY requirements.txt .
 
 RUN pip install -r requirements.txt
 
-COPY manage.py .
-COPY uwsgi.ini .
-COPY entrypoint.sh .
+COPY manage.py uwsgi.py entrypoint.sh /
 
 RUN chmod +x entrypoint.sh
 
