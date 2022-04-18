@@ -62,7 +62,7 @@ DATABASES = {
         'ENGINE': env('DB_ENGINE'),
         'NAME': env('DB_NAME'), 
         'USER': env('DB_USER'), 
-        'PASSWORD': boto3.client('ssm').get_parameter(Name=env('DB_PASS'), WithDecryption=True)['Parameter']['Value'],
+        'PASSWORD': boto3.client('ssm').get_parameter(Name=env('DB_PASSWORD'), WithDecryption=True)['Parameter']['Value'],
         'HOST': env('DB_HOST'), 
         'PORT': env('DB_PORT'),
     }
