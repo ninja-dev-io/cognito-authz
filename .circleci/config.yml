@@ -12,12 +12,13 @@ workflows:
           requires:
             - be-orb/test
           context: aws  
-          repo: "${AWS_RESOURCE_NAME_PREFIX}-dev"
+          repo: "${AWS_ECR}"
+          tag: "${AWS_RESOURCE_NAME_PREFIX}"
       - be-orb/deploy:
           requires:
             - be-orb/build
           context: aws  
           aws-region: AWS_REGION
           family: "${AWS_RESOURCE_NAME_PREFIX}-service-dev"
-          cluster-name: "${AWS_RESOURCE_NAME_PREFIX}-cluster-dev"
-          container-image-name-updates: "container=${AWS_RESOURCE_NAME_PREFIX}-service-dev,tag=latest"
+          cluster-name: "${AWS_ECS_CLUSTER}"
+          container-image-name-updates: "container=${AWS_RESOURCE_NAME_PREFIX}-service-dev,tag=${AWS_RESOURCE_NAME_PREFIX}"
