@@ -88,6 +88,8 @@ class TokenView(APIView):
         url = f'{settings.COGNITO_DOMAIN}{settings.COGNITO_TOKEN_ENDPOINT}'
         resp = requests.post(url, params=data, headers=build_headers())
         resp = resp.json()
+        users = requests.get('http://localhost:3000/users')
+        print(users) 
         if 'error' in resp:
           error_handler(resp['error'])  
         return resp
