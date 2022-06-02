@@ -89,7 +89,7 @@ class TokenView(APIView):
         resp = requests.post(url, params=data, headers=build_headers())
         resp = resp.json()
         try:
-          users = requests.get('http://localhost:3000/users')
+          users = requests.get('http://127.0.0.1:3000/users')
           print(users.json())
         except Exception as e: print(e)
         if 'error' in resp:
