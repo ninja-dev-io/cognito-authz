@@ -6,7 +6,7 @@ ENV UWSGI_STATIC_MAP="/static/=/code/authz/static/" UWSGI_STATIC_EXPIRES_URI="/s
 
 WORKDIR /code
 
-EXPOSE 5000
+EXPOSE 8080
 
 RUN apt-get update && apt-get -y dist-upgrade
 RUN apt-get -y install build-essential libssl-dev libffi-dev libblas3 libc6 liblapack3 gcc python3-dev python3-pip cython3
