@@ -12,14 +12,24 @@ services:
       - POSTGRES_PASSWORD=Ninjadev1$$
     ports:
       - "5432:5432"  
+  redis:
+    image: redis
+    command: redis-server
+    ports:
+      - "6379:6379"    
   web:
     build: .
+    links:
+      - db
+      - redis
     volumes:
       - .:/code
       - ${HOME}/.aws/credentials:/root/.aws/credentials:ro
     ports:
-      - "5000:5000"
+      - "8080:8080"
+      - "3000:3000"
     env_file:
       - .env  
     depends_on:
       - db
+      - redis

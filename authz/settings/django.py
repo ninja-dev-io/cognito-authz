@@ -68,13 +68,12 @@ DATABASES = {
     }
 }
 
-CACHES = {
-    'default': {
-        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+REDIS_URL = env('REDIS_URL', default=None)
+
+if REDIS_URL:
+    CACHES = {
+        "default": env.cache('REDIS_URL')
     }
-}
-
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators

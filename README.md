@@ -17,6 +17,7 @@ Use django admin UI to create global permissions which you can assign to users w
 - DB_NAME
 - DB_USER
 - DB_PASSWORD
+- REDIS_URL
 - AWS_DEFAULT_REGION
 - ADMIN_USERNAME
 - ADMIN_PASSWORD
