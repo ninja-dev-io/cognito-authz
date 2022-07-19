@@ -2,6 +2,8 @@
 Authorization server written in django (python) which act as the middleware between AWS Cognito and microservices architecture.
 Use django admin UI to create global permissions which you can assign to users which are automatically created during an oauth flow.
 
+![logo](https://raw.githubusercontent.com/ninja-dev-io/cognito-authz/master/logo.jpeg)
+
 ## API
 
 - GET /oauth2/token
